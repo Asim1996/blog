@@ -1,0 +1,10 @@
+CREATE TABLE `dev`.`blogs` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(100) NOT NULL,
+  `body` TEXT(10000) NULL,
+  `created` INT NOT NULL,
+  `modified` INT NOT NULL,
+  `status` TINYINT(1) NULL DEFAULT 1,
+  `type` INT NOT NULL,
+  `images` VARCHAR(1000) NULL,
+  PRIMARY KEY (`id`));
