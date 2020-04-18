@@ -19,22 +19,7 @@ app.get('/ping',(req,res)=>{
 return res.send("pong")
 })
 
-app.get('/api/blogs', async (req, res) => {
-    try {
-        let data = await db('blogs').select('*');
-        return res.json({
-            status: "success",
-            data
-        })
-    }catch(error){
-        const status_code = error.status_code || 500;
-        return res.status(status_code)
-            .json({
-                "status": "error",
-                "error": error.message
-            });
-    }
-})
+app.use(require('./routes/blogs'));
 
 
 app.post('/api/blogs', async (req, res) => {
