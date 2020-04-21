@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { BrowserRouter } from 'react-router-dom'
+
+
+import NavBar from './components/NavBar'
+import SideBar from './components/SideBar'
+import BlogView from './components/BlogView'
 
 const App = props => {
-    useEffect(() => {
-      axios.get('/ping')
-        .then(res => setState(res.data))
-    }, [])
-
-    const [state, setState] = useState('')
-
-  return(
+  return (
     <div>
-      Home
-      <p>{state}</p>
+      <CssBaseline />
+      <BrowserRouter>
+      <NavBar />
+      <SideBar />
+      <BlogView />
+      </BrowserRouter>
     </div>
- )
-};
+
+  )
+}
+
 
 export default App;
