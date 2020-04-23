@@ -1,51 +1,44 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import BlogLists from "./BlogLists";
+import axios from "axios"
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-});
+export default function JavaScriptBlog(props) {
+  const [blogs, setBlogsData] = useState({ blogs: [] });
+  const [isError, setIsError] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`/api/blogs/1`)
+        console.log(response);
+        setBlogsData(response.data.data);
+      } catch (error) {
+        console.log(error);
+        setIsError(true);
+      }
 
-export default function JavaScriptBlog() {
-  const classes = useStyles();
+    };
+    fetchData();
+  }, []);
+  // let blogs_data = [
+  //   {
+  //     id:1,
+  //     title:"first"
+  //   },{
+  //     id:2,
+  //     title:"second"
 
+  //   },{
+  //     id:3,
+  //     title:"third"
+  //   }
+  // ]
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+    <div>
+      {isError && <div>Something went wrong ...</div>}
+      <BlogLists blogs_list={blogs} />
+    </div>
+
   );
 }

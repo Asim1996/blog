@@ -8,3 +8,6 @@ CREATE TABLE `dev`.`blogs` (
   `type` INT NOT NULL,
   `images` VARCHAR(1000) NULL,
   PRIMARY KEY (`id`));
+
+  ALTER TABLE `dev`.`blogs` 
+CHANGE COLUMN `modified` `modified` INT NULL DEFAULT NULL ;
