@@ -5,7 +5,7 @@ import NodeBlog from '../components/NodeBlog';
 import ReactBlog from '../components/ReactBlog';
 import MysqlBlog from '../components/MysqlBlog';
 import SystemDesignBlog from '../components/SystemDesignBlog';
-
+import BlogContent from "../components/BlogContent";
 const AppRouter = () => {
     return (
         <div>
@@ -13,7 +13,10 @@ const AppRouter = () => {
                 <Switch>
                     <Redirect exact from="/" to="/javascript" />
                     <Route path="/javascript" exact component={JavaScriptBlog} />
-                    <Route path="/node" component={NodeBlog} />
+                    <Route path="/javascript/:blog_id" exact component={BlogContent} />
+                    <Route path="/node" exact component={NodeBlog} />
+                    <Route path="/node/:blog_id" exact component={BlogContent} />
+                    <Route path="/node/:blog_id" exact component={JavaScriptBlog} />
                     <Route path="/react" component={ReactBlog} />
                     <Route path="/mysql" component={MysqlBlog} />
                     <Route path="/systemdesign" component={SystemDesignBlog} />
