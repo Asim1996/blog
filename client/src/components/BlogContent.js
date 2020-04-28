@@ -1,33 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+
 import ReactHtmlParser from 'react-html-parser';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-// const BlogContent = (props) => {
-//     ReactHtmlParser
-//     console.log(props);
-//     const blog = props.location.state.blog_data;
-//     return (
-//         <div>
-//             <h1>{blog.title}</h1>
-//             <section>
-//                 ReactHtmlParser({blog.body})
-//         </section>
-//             <p>
-//                 Asim Ansari
-//         </p>
-//         </div>
-//     )
 
-// }
+// const useStyles = makeStyles((theme) => ({
+//     container:{
+//             marginBottom:20
+//     }
+
+// }));
 
 class BlogContent extends React.Component {
     constructor(props){
         super(props);
     }
     render() {
-        //   const html = '<div>Example HTML string</div>';
-        //   return <div>{ ReactHtmlParser(html) }</div>;
         const blog = this.props.location.state.blog_data;
+        // const classes = useStyles();
         return (
             <Container maxWidth="sm">
                 <Typography variant="h1" component="h2">
@@ -36,8 +27,7 @@ class BlogContent extends React.Component {
                 <section>
                 { ReactHtmlParser(blog.body) }
                 </section>
-
-            </Container>
+          </Container>
         )
     }
 }

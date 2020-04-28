@@ -7,7 +7,7 @@ import AppMenuItem from './AppMenuItem'
 const appMenuItems = [
   {
     name: 'Javascript',
-    link: '/',
+    link: '/javascript',
     // Icon: IconDashboard,
   },
   {
@@ -26,7 +26,7 @@ const appMenuItems = [
     // Icon: IconBarChart,
   },
   {
-    name: 'Systemdesign',
+    name: 'System Design',
     link: '/systemdesign',
     // Icon: IconLibraryBooks,
   },
@@ -51,6 +51,8 @@ const useStyles = makeStyles(theme =>
   createStyles({
     appMenu: {
       width: '100%',
+      marginTop:'30px'
+     
     },
     navList: {
       width: drawerWidth,
@@ -58,9 +60,9 @@ const useStyles = makeStyles(theme =>
     menuItem: {
       width: drawerWidth,
     },
-    menuItemIcon: {
-      color: '#97c05c',
-    },
+    // menuItemIcon: {
+    //   color: '#97c05c',
+    // },
   }),
 )
 

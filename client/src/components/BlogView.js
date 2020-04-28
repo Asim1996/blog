@@ -4,11 +4,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Container from '@material-ui/core/Container';
 import AppRouter from '../Routers/AppRouter';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme)=>({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
+        position:"relative",
+        top:50,
+        width: "80vw",
       },
       toolbar: theme.mixins.toolbar,
 }));
