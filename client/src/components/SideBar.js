@@ -19,6 +19,10 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: drawerWidth,
     },
+    typography:{
+        padding: 15,
+        fontWeight: 800
+    }
 
 }));
 
@@ -46,7 +50,7 @@ const SideBar = () => {
                     }}
                 >
                     <div className={classes.toolbar}>
-                        <Typography variant="h5" align="center" color="inherit">
+                        <Typography variant="h5" align="center" color="inherit" className={classes.typography}>
                             {"< 404 Found />"}
                         </Typography>
                     </div>
@@ -63,7 +67,7 @@ const SideBar = () => {
                     open
                 >
                     <div className={classes.toolbar}>
-                        <Typography variant="h5" align="center" color="inherit">
+                        <Typography variant="h5" align="center" color="inherit" className={classes.typography}>
                             {"< 404 Found />"}
                         </Typography>
                     </div>

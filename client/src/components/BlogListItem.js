@@ -10,7 +10,20 @@ import constants from "../constants";
 
 const useStyles = makeStyles({
     root: {
+        position:"relative",
         minWidth: 275,
+        marginBottom: 20,
+        '&::before':{
+            content: "'\\201C'",
+            position: "absolute",
+            top: "-1rem",
+            left: "-0.2rem",
+            fontSize: '13rem',
+            lineHeight: 1,
+            color: "#f4f2f2",
+            // font-family: sans-serif;
+            zIndex: 1
+        }
     },
     bullet: {
         display: 'inline-block',
@@ -23,6 +36,22 @@ const useStyles = makeStyles({
     pos: {
         marginBottom: 12,
     },
+    // content:{
+    //     position:"relative"
+    // },
+    // content:{
+    //     '&::before':{
+    //             content: '&#10077',
+    //             position: "absolute",
+    //             top: "-2rem",
+    //             left: "-1rem",
+    //             fontSize: '20rem',
+    //             lineHeight: 1,
+    //             color: "#f4f2f2",
+    //             // font-family: sans-serif;
+    //             zIndex: 1
+    //     }
+    // }
 });
 
 export default function BlogListItem(props) {
@@ -32,7 +61,7 @@ export default function BlogListItem(props) {
     return (
         <div>
             <Card className={classes.root}>
-                <CardContent>
+                <CardContent >
                     <Typography className={classes.title} color="textSecondary" gutterBottom>
                         {props.blog_data.title}
                     </Typography>
