@@ -1,19 +1,24 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
 import constants from "../constants";
+import { withRouter } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
-        position:"relative",
-        minWidth: 275,
-        marginBottom: 20,
-        '&::before':{
+        position: "relative",
+        cursor: 'pointer',
+        minWidth: 200,
+        borderRadius: 15,
+        boxShadow: '0 1.5rem 4rem rgba(0,0,0,0.15)',
+        marginBottom: 25,
+        transition: 'transform .3s',
+        '&:hover': {
+            transform: 'translateY(-1.1rem) scale(1.03)'
+        },
+        '&::before': {
             content: "'\\201C'",
             position: "absolute",
             top: "-1rem",
@@ -21,7 +26,6 @@ const useStyles = makeStyles({
             fontSize: '13rem',
             lineHeight: 1,
             color: "#f4f2f2",
-            // font-family: sans-serif;
             zIndex: 1
         }
     },
@@ -31,64 +35,49 @@ const useStyles = makeStyles({
         transform: 'scale(0.8)',
     },
     title: {
-        fontSize: 14,
+        fontSize: 18,
+        textAlign: 'center',
+        fontWeight: 700,
+        textTransform: 'uppercase'
+
     },
     pos: {
         marginBottom: 12,
+        textAlign: 'center',
     },
-    // content:{
-    //     position:"relative"
-    // },
-    // content:{
-    //     '&::before':{
-    //             content: '&#10077',
-    //             position: "absolute",
-    //             top: "-2rem",
-    //             left: "-1rem",
-    //             fontSize: '20rem',
-    //             lineHeight: 1,
-    //             color: "#f4f2f2",
-    //             // font-family: sans-serif;
-    //             zIndex: 1
-    //     }
-    // }
+    date: {
+        fontWeight: 200,
+        textAlign: 'right'
+    }
 });
 
-export default function BlogListItem(props) {
+function BlogListItem(props) {
     const classes = useStyles();
-    // console.log(props);
-    // const bull = <span className={classes.bullet}>•</span>;
+    function navigatePage() {
+        const title = props.blog_data.title.replace(/[^A-Z0-9]+/ig, "-");
+        props.history.push({
+            pathname: `/${constants.BLOGS_CATEGORY[props.blog_data.category]}/${title}`,
+            state: { blog_data: props.blog_data }
+        })
+    }
     return (
         <div>
-            <Card className={classes.root}>
+            <Card className={classes.root} onClick={navigatePage}>
                 <CardContent >
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    <Typography className={classes.title} color="inherit" gutterBottom>
                         {props.blog_data.title}
                     </Typography>
-                    {/* <Typography variant="h5" component="h2">
-            be{bull}nev{bull}o{bull}lent
-          </Typography> */}
-                    {/* <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography> */}
-                    <Typography variant="body2" component="p">
-                        {props.blog_data.body}
-                        {/* <br />
-            {'"a benevolent smile"'} */}
+                    <Typography className={classes.pos} color="textSecondary">
+                        {props.blog_data.summary}
                     </Typography>
+                    <div className={classes.date}>
+                    <Typography  variant="span" component="span" color="textSecondary">
+                        {props.blog_data.created}
+                    </Typography>
+                   </div> 
                 </CardContent>
-                <CardActions>
-                    <Link to={{
-                        pathname: `/${constants.BLOGS_CATEGORY[props.blog_data.category]}/${props.blog_data.id}`,
-                        state: {
-                            blog_data: props.blog_data
-                           }
-                    }}>
-                        <Button size="small">Read More</Button>
-                    </Link>
-
-                </CardActions>
             </Card>
         </div>
     )
 }
+export default withRouter(BlogListItem);

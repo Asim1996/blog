@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
         width: drawerWidth,
     },
     typography:{
+        fontFamily:"Lato",
+        letterSpacing:1,
         padding: 15,
         fontWeight: 800
     }

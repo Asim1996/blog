@@ -4,15 +4,20 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Container from '@material-ui/core/Container';
 import AppRouter from '../Routers/AppRouter';
-import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme)=>({
+    divRoot:{
+        margin: '0 auto'
+    },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
         position:"relative",
-        top:50,
-        width: "80vw",
+        top:100,
+        width: "100vw",
+        [theme.breakpoints.up('sm')]: {
+            width: "70vw"
+        },
       },
       toolbar: theme.mixins.toolbar,
 }));
@@ -20,7 +25,7 @@ const useStyles = makeStyles((theme)=>({
 const BlogView = () => {
     const classes = useStyles();
     return (
-        <div>
+        <div className={classes.divRoot}>
             <main className={classes.content}>
             {/* <div className={classes.toolbar} > */}
                 <Container maxWidth="lg">
@@ -33,4 +38,3 @@ const BlogView = () => {
 }
 
 export default BlogView;
-// className={classes.container}

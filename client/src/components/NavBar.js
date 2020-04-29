@@ -3,7 +3,6 @@ import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
@@ -16,12 +15,13 @@ const useStyles = makeStyles((theme)=>({
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
+      background: "#373B44",  /* fallback for old browsers */
+      background: '-webkit-linear-gradient(to right, #4286f4, #373B44)',  /* Chrome 10-25, Safari 5.1-6 */
+      background: 'linear-gradient(to right, #4286f4, #373B44)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     },
   },
-      // toolBar: {
-      //   display:'flex',
-      //   justifyContent: 'flex-end',
-      // },
+
       toolbar: theme.mixins.toolbar,
       menuButton: {
         marginRight: theme.spacing(2),
@@ -36,11 +36,11 @@ const useStyles = makeStyles((theme)=>({
         '&:hover': {
           backgroundColor: fade(theme.palette.common.white, 0.25),
         },
-        marginLeft: 0,
+        marginLeft: 20,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-          marginLeft: theme.spacing(1),
           width: 'auto',
+          margin: '0 auto',
         },
       },
       searchIcon: {
@@ -62,9 +62,9 @@ const useStyles = makeStyles((theme)=>({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-          width: '12ch',
+          width: '30ch',
           '&:focus': {
-            width: '20ch',
+            width: '40ch',
           },
         },
       },

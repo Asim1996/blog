@@ -5,30 +5,47 @@ import ReactHtmlParser from 'react-html-parser';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
-// const useStyles = makeStyles((theme) => ({
-//     container:{
-//             marginBottom:20
-//     }
-
-// }));
-
-class BlogContent extends React.Component {
-    constructor(props){
-        super(props);
+const useStyles = makeStyles((theme) => ({
+    typography:{
+        borderBottom: '1px solid #ccc',
+        fontFamily:'Lato',
+        letterSpacing:1,
+        textTransform:'uppercase',
+        padding:5
+    },
+    date:{
+        fontSize:12,
+        textAlign:'right'
+    },
+    section:{
+        fontFamily:'Lato',
+        lineHeight:2,
+        fontWeight:400
+    },
+    blockquote:{
+        background:'white',
+        padding:5
     }
-    render() {
-        const blog = this.props.location.state.blog_data;
-        // const classes = useStyles();
-        return (
-            <Container maxWidth="sm">
-                <Typography variant="h1" component="h2">
-                    {blog.title}
-                </Typography>
-                <section>
-                { ReactHtmlParser(blog.body) }
-                </section>
-          </Container>
-        )
-    }
+}));
+
+const BlogContent = (props) => {
+    const blog = props.location.state.blog_data;
+    const classes = useStyles();
+    return (
+        <Container maxWidth="lg">
+            <Typography variant="h4" component="h4" className={classes.typography}>
+                {blog.title}
+                {/* <div className={classes.date}> */}
+                    <Typography  variant="span" component="span" color="textSecondary" className={classes.date}>
+                        {blog.created}
+                    </Typography>
+                   {/* </div>  */}
+            </Typography>
+            <section className = {classes.section}>
+                {ReactHtmlParser(blog.body)}
+            </section>
+        </Container>
+    )
 }
+
 export default BlogContent;
