@@ -33,7 +33,9 @@ router.post('/api/blogs', async (req, res) => {
     try {
         let blog_data = req.body;
         //not validation empty values
-        blog_data.created = Date.now()/1000;
+        // blog_data.created = Date.now()/1000;
+        const  now = new Date();
+        blog_data.created = now.getDate()+'/'+(now.getMonth()+1)+'/'+now.getFullYear();
         const blog_id = await db('blogs').insert(blog_data);
         // console.log(blog_id);
         return res.json({

@@ -13,13 +13,15 @@ const AppRouter = () => {
                 <Switch>
                     <Redirect exact from="/" to="/javascript" />
                     <Route path="/javascript" exact component={JavaScriptBlog} />
-                    <Route path="/javascript/:blog_id" exact component={BlogContent} />
+                    <Route path="/javascript/:blog_title" exact component={BlogContent} />
                     <Route path="/node" exact component={NodeBlog} />
-                    <Route path="/node/:blog_id" exact component={BlogContent} />
-                    <Route path="/node/:blog_id" exact component={JavaScriptBlog} />
+                    <Route path="/node/:blog_title" exact component={BlogContent} />
                     <Route path="/react" component={ReactBlog} />
+                    <Route path="/react/:blog_title" exact component={BlogContent} />
                     <Route path="/mysql" component={MysqlBlog} />
+                    <Route path="/mysql/:blog_title" exact component={BlogContent} />
                     <Route path="/systemdesign" component={SystemDesignBlog} />
+                    <Route path="/systemdesign/:blog_title" exact component={BlogContent} />
                     {/* <Route component={NotFoundPage} /> */}
                 </Switch>
             {/* </BrowserRouter> */}
