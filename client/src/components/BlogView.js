@@ -7,16 +7,18 @@ import AppRouter from '../Routers/AppRouter';
 
 const useStyles = makeStyles((theme)=>({
     divRoot:{
-        margin: '0 auto'
+        margin: '0 auto',
+        width: '-webkit-fill-available'
     },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
         position:"relative",
         top:100,
-        width: "100vw",
+        margin: '0 auto',
+        maxWidth: "100vw",
         [theme.breakpoints.up('sm')]: {
-            width: "70vw"
+            maxWidth: "70vw"
         },
       },
       toolbar: theme.mixins.toolbar,
@@ -27,11 +29,9 @@ const BlogView = () => {
     return (
         <div className={classes.divRoot}>
             <main className={classes.content}>
-            {/* <div className={classes.toolbar} > */}
                 <Container maxWidth="lg">
                     <AppRouter />
                 </Container>
-            {/* </div>     */}
             </main>
         </div>
     )

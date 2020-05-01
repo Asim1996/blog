@@ -1,8 +1,19 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
+const multer  = require('multer')
+const fs = require('fs'); 
 const db = require('../middleware/database');
-
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, '/tmp/my-blogs')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+  })
+   
+const upload = multer({ storage: storage })
 router.get('/api/blogs/:category', async (req,res) => {
     try{
         const category = req.params.category;
@@ -14,11 +25,14 @@ router.get('/api/blogs/:category', async (req,res) => {
                 "data": []
             })
         }
-        return res.json({
-            "status": "success",
-            "message": "Blogs List",
-            "data": blogs_list
-        })
+        setTimeout(()=>{
+            return res.json({
+                "status": "success",
+                "message": "Blogs List",
+                "data": blogs_list
+            })
+        },3000)
+
     }catch(error){
         const status_code = error.status_code || 500;
         return res.status(status_code)
@@ -29,9 +43,13 @@ router.get('/api/blogs/:category', async (req,res) => {
     }
 })
 
-router.post('/api/blogs', async (req, res) => {
+router.post('/api/blogs', upload.single('blogfile'), async (req, res) => {
     try {
+        console.log(req.file);
         let blog_data = req.body;
+        blog_data.body = fs.readFileSync(`${req.file.destination}/${req.file.filename}`, 
+            {encoding:'utf8', flag:'r'}); 
+  
         //not validation empty values
         // blog_data.created = Date.now()/1000;
         const  now = new Date();

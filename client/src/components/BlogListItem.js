@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     root: {
         position: "relative",
         cursor: 'pointer',
-        minWidth: 200,
+        // minWidth: 200,
         borderRadius: 15,
         boxShadow: '0 1.5rem 4rem rgba(0,0,0,0.15)',
         marginBottom: 25,
@@ -71,7 +71,7 @@ function BlogListItem(props) {
                         {props.blog_data.summary}
                     </Typography>
                     <div className={classes.date}>
-                    <Typography  variant="span" component="span" color="textSecondary">
+                    <Typography component="p" className={classes.listDate}>
                         {props.blog_data.created}
                     </Typography>
                    </div> 

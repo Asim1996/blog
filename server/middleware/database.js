@@ -2,15 +2,13 @@
 
 const knex = require('knex');
 
-console.log('db host', process.env.DB_HOST);
-console.log('db', process.env.DB_DB);
 module.exports = knex({
     client: 'mysql',
     connection: {
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_DB
+        host: process.env.DB_HOST || 'localhost',
+        user: process.env.DB_USER || 'root',
+        password: process.env.DB_PASS || '123456',
+        database: process.env.DB_DB || 'dev'
     },
     // debug: debug,
     pool: {

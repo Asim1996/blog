@@ -9,22 +9,20 @@ import BlogContent from "../components/BlogContent";
 const AppRouter = () => {
     return (
         <div>
-       
-                <Switch>
+               <Switch>
                     <Redirect exact from="/" to="/javascript" />
                     <Route path="/javascript" exact component={JavaScriptBlog} />
                     <Route path="/javascript/:blog_title" exact component={BlogContent} />
                     <Route path="/node" exact component={NodeBlog} />
                     <Route path="/node/:blog_title" exact component={BlogContent} />
-                    <Route path="/react" component={ReactBlog} />
+                    <Route path="/react" exact component={ReactBlog} />
                     <Route path="/react/:blog_title" exact component={BlogContent} />
-                    <Route path="/mysql" component={MysqlBlog} />
+                    <Route path="/mysql" exact component={MysqlBlog} />
                     <Route path="/mysql/:blog_title" exact component={BlogContent} />
-                    <Route path="/systemdesign" component={SystemDesignBlog} />
+                    <Route path="/systemdesign" exact component={SystemDesignBlog} />
                     <Route path="/systemdesign/:blog_title" exact component={BlogContent} />
                     {/* <Route component={NotFoundPage} /> */}
                 </Switch>
-            {/* </BrowserRouter> */}
         </div>
     )
 

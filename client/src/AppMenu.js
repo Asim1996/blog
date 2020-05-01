@@ -8,27 +8,22 @@ const appMenuItems = [
   {
     name: 'Javascript',
     link: '/javascript',
-    // Icon: IconDashboard,
   },
   {
     name: 'Node',
     link: '/node',
-    // Icon: IconShoppingCart,
   },
   {
     name: 'React',
     link: '/react',
-    // Icon: IconPeople,
   },
   {
     name: 'Mysql',
     link: '/mysql',
-    // Icon: IconBarChart,
   },
   {
     name: 'System Design',
     link: '/systemdesign',
-    // Icon: IconLibraryBooks,
   },
 ]
 
@@ -52,7 +47,6 @@ const useStyles = makeStyles(theme =>
     appMenu: {
       width: '100%',
       marginTop:'30px'
-     
     },
     navList: {
       width: drawerWidth,
@@ -60,9 +54,6 @@ const useStyles = makeStyles(theme =>
     menuItem: {
       width: drawerWidth,
     },
-    // menuItemIcon: {
-    //   color: '#97c05c',
-    // },
   }),
 )
 
