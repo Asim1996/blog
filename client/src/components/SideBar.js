@@ -18,12 +18,24 @@ const useStyles = makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         width: drawerWidth,
+        background: '#232526',
+        background: '-webkit-linear-gradient(to right, #414345, #232526)',
+        background: 'linear-gradient(to right, #414345, #232526)',
+        color: 'white',
     },
-    typography:{
-        fontFamily:"Lato",
-        letterSpacing:1,
+    typography: {
+        fontFamily: "Lato",
+        letterSpacing: 1,
         padding: 15,
-        fontWeight: 800
+        fontWeight: 800,
+        '&::after':{
+            content: "''", 
+    display: 'block', 
+    margin: '0 auto', 
+    width: '70%', 
+    paddingTop: '20px', 
+    borderBottom: '1px solid white', 
+        }
     }
 
 }));

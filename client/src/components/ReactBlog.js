@@ -1,15 +1,19 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BlogLists from "./BlogLists";
 import useDataApi from '../hooks/fetchReducer';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    marginLeft: '25rem'
+  },
+}));
 export default function ReactBlog(props) {
+  const classes = useStyles();
   const [state, setUrl] = useDataApi(`/api/blogs/3`);
   const { data, isError, isLoading } = state;
-  if (isLoading) {
-    return <h1>...Loading</h1>
-  }
   if (data) {
     console.log(data);
     return (
@@ -19,5 +23,11 @@ export default function ReactBlog(props) {
       </div>
     )
   }
-  return <h1>Oops something went wrong!</h1>
+  if (isError) {
+    return <h1>Oops something went wrong!</h1>
+  }
+  return (<div className={classes.root}>
+    <CircularProgress />
+  </div>
+  )
 }

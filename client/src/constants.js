@@ -3,7 +3,9 @@ const constants = {
     BLOGS_CATEGORY:{
         "1" : "javascript",
         "2" : "node",
-        "4" : "React"
+        "3" : "react",
+        "4" : "mysql",
+        "5" : "systemdesign"
     }
 }
 module.exports = constants;

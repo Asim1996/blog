@@ -14,33 +14,58 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.get('/ping',(req,res)=>{
-return res.send("pong")
-})
+
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(require('./routes/blogs'));
+if(process.env.NODE_ENV === 'production'){
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/build/index.html'));
+});
+}
 
 
-app.post('/api/blogs', async (req, res) => {
-    try {
-        let blog_data = req.body;
-        const blog_id = await db('blogs').insert(blog_data);
-        console.log(blog_id);
-        return res.json({
-            status: "success",
-            data: {
-                blog_id: blog_id[0]
-            }
-        })
-    } catch(error){
-        const status_code = error.status_code || 500;
-        return res.status(status_code)
-            .json({
-                "status": "error",
-                "error": error.message
-            });
-    }
-})
+var debug = require('debug')('myblog:server');
+var http = require('http');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '5000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
 
 module.exports = app;
