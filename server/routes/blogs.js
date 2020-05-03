@@ -62,6 +62,7 @@ router.post('/api/blogs', upload.single('blogfile'), async (req, res) => {
   
         const  now = new Date();
         blog_data.created = now.getDate()+'/'+(now.getMonth()+1)+'/'+now.getFullYear();
+        blog_data.timestamp = now/1000;
         const blog_id = await db('blogs').insert(blog_data);
         fs.unlinkSync(`${req.file.destination}/${req.file.filename}`);
         return res.json({
