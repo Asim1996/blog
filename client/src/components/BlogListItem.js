@@ -6,14 +6,14 @@ import Typography from '@material-ui/core/Typography';
 import constants from "../constants";
 import { withRouter } from 'react-router-dom';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         position: "relative",
         cursor: 'pointer',
         // minWidth: 200,
         borderRadius: 15,
         boxShadow: '0 1.5rem 4rem rgba(0,0,0,0.15)',
-        marginBottom: 25,
+        marginBottom: '1rem',
         transition: 'transform .3s',
         '&:hover': {
             transform: 'translateY(-1.1rem) scale(1.03)'
@@ -26,30 +26,44 @@ const useStyles = makeStyles({
             fontSize: '13rem',
             lineHeight: 1,
             color: "#f4f2f2",
-            zIndex: 1
+            zIndex: 1,
+            [theme.breakpoints.down('xs')]: {
+                display: 'none',
+                fontSize: '7rem',
+            },
+
         }
     },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
+    content: {
+        padding: '0.5rem'
     },
     title: {
-        fontSize: 18,
+        fontSize: '1.5rem',
         textAlign: 'center',
         fontWeight: 700,
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1rem',
+            lineHeight: 1.5
+        },
 
     },
     pos: {
-        marginBottom: 12,
         textAlign: 'center',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '0.7rem',
+            lineHeight: 1.5
+        },
     },
     date: {
         fontWeight: 200,
-        textAlign: 'right'
+        textAlign: 'right',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '0.7rem',
+            lineHeight: 1.5
+        },
     }
-});
+}));
 
 function BlogListItem(props) {
     const classes = useStyles();
@@ -63,7 +77,7 @@ function BlogListItem(props) {
     return (
         <div>
             <Card className={classes.root} onClick={navigatePage}>
-                <CardContent >
+                <CardContent className={classes.content}>
                     <Typography className={classes.title} color="inherit" gutterBottom>
                         {props.blog_data.title}
                     </Typography>
@@ -71,10 +85,10 @@ function BlogListItem(props) {
                         {props.blog_data.summary}
                     </Typography>
                     <div className={classes.date}>
-                    <Typography component="p" className={classes.listDate}>
-                        {props.blog_data.created}
-                    </Typography>
-                   </div> 
+                        <Typography component="p" className={classes.listDate}>
+                            {props.blog_data.created}
+                        </Typography>
+                    </div>
                 </CardContent>
             </Card>
         </div>

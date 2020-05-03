@@ -14,6 +14,10 @@ const storage = multer.diskStorage({
   })
    
 const upload = multer({ storage: storage })
+router.get('/api/blogs/ping', (req,res)=>{
+    res.send('pong');
+})
+
 router.get('/api/blogs/:category', async (req,res) => {
     try{
         const category = req.params.category;
@@ -45,17 +49,21 @@ router.get('/api/blogs/:category', async (req,res) => {
 
 router.post('/api/blogs', upload.single('blogfile'), async (req, res) => {
     try {
-        console.log(req.file);
+        if(req.body.secret != process.env.SECRET ){
+            return res.status(404).json({
+                status:"error",
+                message:"Unauthorized"
+            })
+        }
+        delete req.body.secret;
         let blog_data = req.body;
         blog_data.body = fs.readFileSync(`${req.file.destination}/${req.file.filename}`, 
             {encoding:'utf8', flag:'r'}); 
   
-        //not validation empty values
-        // blog_data.created = Date.now()/1000;
         const  now = new Date();
         blog_data.created = now.getDate()+'/'+(now.getMonth()+1)+'/'+now.getFullYear();
         const blog_id = await db('blogs').insert(blog_data);
-        // console.log(blog_id);
+        fs.unlinkSync(`${req.file.destination}/${req.file.filename}`);
         return res.json({
             status: "success",
             data: {

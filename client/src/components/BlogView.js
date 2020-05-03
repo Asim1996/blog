@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme)=>({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
         position:"relative",
         top:100,
         margin: '0 auto',
