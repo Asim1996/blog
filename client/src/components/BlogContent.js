@@ -17,58 +17,71 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'uppercase',
         padding: 5,
         fontSize: '2rem',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.5rem',
+        },
     },
     headingContainer: {
         position: 'relative',
         borderBottom: '1px solid #ccc',
     },
     date: {
-        position: 'absolute',
-        right: 0,
-        top: '20px',
-        fontSize: '12px',
+        fontSize: '0.7rem',
+        // display: 'inline-block'
     },
     section: {
         fontFamily: 'Lato',
         lineHeight: 2,
         fontWeight: 400,
         maxWidth: '70vw',
-        padding: '1rem',
-        letterSpacing:'1px',
+        // padding: '1rem',
+        letterSpacing: '1px',
         borderBottom: '1px solid #ccc',
-        fontSize:'1rem'
+        fontSize: '1rem',
+        [theme.breakpoints.down('xs')]: {
+            maxWidth: '100vw',
+            lineHeight: 1.5,
+        },
     },
-    author:{
+    author: {
         fontFamily: 'Lato',
-        marginTop:'1.5rem',
-        display:'flex',
-        flexDirection:'flex-row'
+        marginTop: '1.5rem',
+        display: 'flex',
+        flexDirection: 'flex-row'
     },
     large: {
         width: theme.spacing(12),
         height: theme.spacing(12),
-        cursor:'pointer',
-      },
-      info:{
+        cursor: 'pointer',
+    },
+    info: {
         //   padding:'1rem',
-          paddingLeft:'1rem',
-          marginLeft:'1rem',
-          borderLeft: '1px solid #ccc',
+        paddingLeft: '1rem',
+        marginLeft: '1rem',
+        borderLeft: '1px solid #ccc',
 
-      },
-      iconlarge: {
-        cursor:'pointer',  
+    },
+    iconlarge: {
+        cursor: 'pointer',
         width: theme.spacing(4),
         height: theme.spacing(4),
-        marginRight:12,
-        marginTop:8,
-        color:'black'
-      },
-      about:{
+        marginRight: 12,
+        marginTop: 8,
+        color: 'black'
+    },
+    about: {
         fontFamily: 'Lato',
-        lineHeight:'1.5',
-        letterSpacing:'1px'
-      }
+        lineHeight: '1.5',
+        letterSpacing: '1px',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '0.8rem',
+            lineHeight: '1.3',
+        },
+    },
+    socialMedia : {
+        whiteSpace : 'nowrap'
+    }
+
 }));
 
 const BlogContent = (props) => {
@@ -79,7 +92,7 @@ const BlogContent = (props) => {
             <div className={classes.headingContainer}>
                 <Typography variant="h4" component="h4" className={classes.typography}>
                     {blog.title}
-                    <Typography  component="p" color="textSecondary" className={classes.date}>
+                    <Typography component="p" color="textSecondary" className={classes.date}>
                         {blog.created}
                     </Typography>
                 </Typography>
@@ -89,24 +102,24 @@ const BlogContent = (props) => {
             </section>
             <div className={classes.author}>
                 <a href="https://asim-ansari.herokuapp.com/" target="blank">
-                <Avatar alt="Asim Ansari" src={me} className={classes.large} />
+                    <Avatar alt="Asim Ansari" src={me} className={classes.large} />
                 </a>
                 <div className={classes.info}>
-                <Typography  component="p" className={classes.about}>
-                    Written By: Asim Ansari 
-                 </Typography>  
-                 <Typography  component="p" color="textSecondary" className={classes.about}>
-                   Associate Software Engineer
-                 </Typography>  
-                 <Typography  component="p" color="textSecondary" className={classes.about}>
-                    inFeedo
-                 </Typography>   
-                 <div className={classes.socialMedia}>
-                    <a href="https://www.linkedin.com/in/asim-ansari96/" target="blank"><LinkedInIcon className={classes.iconlarge}/></a>
-                    <a href="https://github.com/Asim1996" target="blank"><GitHubIcon className={classes.iconlarge}/></a>
-                    <a href="https://twitter.com/asim_ansari7" target="blank"><TwitterIcon className={classes.iconlarge}/></a>
-                    <a href="https://www.instagram.com/_asim_96/" target="blank"><InstagramIcon className={classes.iconlarge}/></a>
-                 </div>   
+                    <Typography component="p" className={classes.about}>
+                        Written By: Asim Ansari
+                 </Typography>
+                    <Typography component="p" color="textSecondary" className={classes.about}>
+                        Associate Software Engineer
+                 </Typography>
+                    <Typography component="p" color="textSecondary" className={classes.about}>
+                        inFeedo
+                 </Typography>
+                    <div className={classes.socialMedia}>
+                        <a href="https://www.linkedin.com/in/asim-ansari96/" target="blank"><LinkedInIcon className={classes.iconlarge} /></a>
+                        <a href="https://github.com/Asim1996" target="blank"><GitHubIcon className={classes.iconlarge} /></a>
+                        <a href="https://twitter.com/asim_ansari7" target="blank"><TwitterIcon className={classes.iconlarge} /></a>
+                        <a href="https://www.instagram.com/_asim_96/" target="blank"><InstagramIcon className={classes.iconlarge} /></a>
+                    </div>
                 </div>
             </div>
         </Container>

@@ -9,7 +9,7 @@ export default function BlogLists(props){
 		blogs.length > 0 ? blogs.map((blog) => {
 			return <BlogListItem key={blog.id} blog_data = {blog}/>
         })
-        : "No Blogs Available"
+        : "Still writing..."
     }
         </div>
     )
