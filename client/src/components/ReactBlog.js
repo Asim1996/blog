@@ -15,10 +15,6 @@ export default function ReactBlog(props) {
   const [state, setUrl] = useDataApi(`/api/blogs/3`);
   const { data, isError, isLoading } = state;
   if (data) {
-<<<<<<< HEAD
-=======
-    console.log(data);
->>>>>>> fdf4f5ab0f30a161a0dc85aa81a5249523c825ce
     return (
       <div>
         {/* {isError && <div>Something went wrong ...</div>} */}

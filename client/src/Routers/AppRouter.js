@@ -6,11 +6,8 @@ import ReactBlog from '../components/ReactBlog';
 import MysqlBlog from '../components/MysqlBlog';
 import SystemDesignBlog from '../components/SystemDesignBlog';
 import BlogContent from "../components/BlogContent";
-<<<<<<< HEAD
 import NotFoundPage from "../components/NotFoundPage";
 
-=======
->>>>>>> fdf4f5ab0f30a161a0dc85aa81a5249523c825ce
 const AppRouter = () => {
     return (
         <div>
@@ -26,11 +23,7 @@ const AppRouter = () => {
                     <Route path="/mysql/:blog_title" exact component={BlogContent} />
                     <Route path="/systemdesign" exact component={SystemDesignBlog} />
                     <Route path="/systemdesign/:blog_title" exact component={BlogContent} />
-<<<<<<< HEAD
                     <Route component={NotFoundPage} />
-=======
-                    {/* <Route component={NotFoundPage} /> */}
->>>>>>> fdf4f5ab0f30a161a0dc85aa81a5249523c825ce
                 </Switch>
         </div>
     )
