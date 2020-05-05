@@ -40,7 +40,6 @@ const dataFetchReducer = (state, action) => {
         dispatch({ type: 'FETCH_INIT' });
         try {
           const result = await axios.get(url);
-          console.log(result);
           dispatch({ type: 'FETCH_SUCCESS', payload: result.data.data });
         } catch (error) {
           dispatch({ type: 'FETCH_FAILURE' });

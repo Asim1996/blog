@@ -6,6 +6,8 @@ import ReactBlog from '../components/ReactBlog';
 import MysqlBlog from '../components/MysqlBlog';
 import SystemDesignBlog from '../components/SystemDesignBlog';
 import BlogContent from "../components/BlogContent";
+import NotFoundPage from "../components/NotFoundPage";
+
 const AppRouter = () => {
     return (
         <div>
@@ -21,7 +23,7 @@ const AppRouter = () => {
                     <Route path="/mysql/:blog_title" exact component={BlogContent} />
                     <Route path="/systemdesign" exact component={SystemDesignBlog} />
                     <Route path="/systemdesign/:blog_title" exact component={BlogContent} />
-                    {/* <Route component={NotFoundPage} /> */}
+                    <Route component={NotFoundPage} />
                 </Switch>
         </div>
     )

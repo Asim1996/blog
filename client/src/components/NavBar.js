@@ -111,7 +111,6 @@ const NavBar = (props) => {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   const handleDrawerToggle = () => {
-    console.log("check");
     setMobileOpen(!mobileOpen);
   };
   return (

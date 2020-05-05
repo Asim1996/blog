@@ -16,7 +16,6 @@ export default function NodeBlog(props) {
   const { data, isError, isLoading } = state;
 
   if (data) {
-    console.log(data);
     return (
       <div>
         {/* {isError && <div>Something went wrong ...</div>} */}
