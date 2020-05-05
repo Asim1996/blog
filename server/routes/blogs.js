@@ -1,8 +1,8 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const redis = require('redis');
-const client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+// const redis = require('redis');
+// const client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
 const multer = require('multer')
 const fs = require('fs');
 const db = require('../middleware/database');
