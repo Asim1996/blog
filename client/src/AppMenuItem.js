@@ -23,7 +23,7 @@ const AppMenuItem = props => {
   const MenuItemRoot = (
     <AppMenuItemComponent className={classes.menuItem} link={link} onClick={handleClick}>
       <ThemeProvider theme={theme}>
-        <ListItemText primary={name} inset={!Icon} />
+        <ListItemText primary={name} inset={!Icon} className={classes.textItem} />
       </ThemeProvider>
       {isExpandable && !open}
       {isExpandable && open}
@@ -57,19 +57,17 @@ const useStyles = makeStyles(theme =>
   createStyles({
     menuItem: {
       '&.active': {
-        background: '#4286f4',
+        background: 'rgb(0,0,0,0.3)',
         borderRadius: '10px',
-        '& .MuiListItemIcon-root': {
-          color: '#fff',
-        },
       },
     },
-    listItem: {
-      fontWeight: 800,
-      fontFamily: "lato",
-      lineHeight: 2,
-      letterSpacing: 2,
-      padding: 0
+    textItem:{
+      "& span": {
+        fontFamily:'Lato',
+        fontWeight:800,
+        fontSize:'1.3rem'
+      }
+     
     }
   }),
 )

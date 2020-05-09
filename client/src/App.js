@@ -7,6 +7,8 @@ import BlogView from './components/BlogView'
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    width:'100vw',
+    height:'100vh'
   },
 }));
 

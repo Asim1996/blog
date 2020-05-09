@@ -18,8 +18,8 @@ const appMenuItems = [
     link: '/react',
   },
   {
-    name: 'Mysql',
-    link: '/mysql',
+    name: 'Aws',
+    link: '/aws',
   },
   {
     name: 'System Design',
@@ -39,7 +39,7 @@ const AppMenu = props => {
     )
 } 
 
-const drawerWidth = 240
+const drawerWidth = 260
 
 const useStyles = makeStyles(theme =>
   createStyles({

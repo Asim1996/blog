@@ -3,7 +3,7 @@ import { Switch, Route, BrowserRouter, Redirect } from 'react-router-dom'
 import JavaScriptBlog from '../components/JavaScriptBlog';
 import NodeBlog from '../components/NodeBlog';
 import ReactBlog from '../components/ReactBlog';
-import MysqlBlog from '../components/MysqlBlog';
+import AwsBlog from '../components/Aws';
 import SystemDesignBlog from '../components/SystemDesignBlog';
 import BlogContent from "../components/BlogContent";
 import NotFoundPage from "../components/NotFoundPage";
@@ -19,8 +19,8 @@ const AppRouter = () => {
                     <Route path="/node/:blog_title" exact component={BlogContent} />
                     <Route path="/react" exact component={ReactBlog} />
                     <Route path="/react/:blog_title" exact component={BlogContent} />
-                    <Route path="/mysql" exact component={MysqlBlog} />
-                    <Route path="/mysql/:blog_title" exact component={BlogContent} />
+                    <Route path="/aws" exact component={AwsBlog} />
+                    <Route path="/aws/:blog_title" exact component={BlogContent} />
                     <Route path="/systemdesign" exact component={SystemDesignBlog} />
                     <Route path="/systemdesign/:blog_title" exact component={BlogContent} />
                     <Route component={NotFoundPage} />

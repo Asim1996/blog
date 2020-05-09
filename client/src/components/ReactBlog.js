@@ -18,7 +18,7 @@ export default function ReactBlog(props) {
     return (
       <div>
         {/* {isError && <div>Something went wrong ...</div>} */}
-        <BlogLists blogs_list={data} />
+        <BlogLists blogs_list={data} category_image="react"/>
       </div>
     )
   }

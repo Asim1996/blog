@@ -13,14 +13,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MysqlBlog(props) {
+export default function AwsBlog(props) {
   const classes = useStyles();
   const [state, setUrl] = useDataApi(`/api/blogs/4`);
   const { data, isError, isLoading } = state;
   if (data) {
     return (
       <div>
-        <BlogLists blogs_list={data} />
+        <BlogLists blogs_list={data} category_image="aws" />
       </div>
     )
   }

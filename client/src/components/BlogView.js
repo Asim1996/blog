@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme)=>({
     content: {
         flexGrow: 1,
         position:"relative",
-        top:100,
+        top:10,
         margin: '0 auto',
         maxWidth: "100vw",
         [theme.breakpoints.up('sm')]: {

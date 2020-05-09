@@ -8,7 +8,7 @@ const fs = require('fs');
 const db = require('../middleware/database');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '/tmp/my-blogs')
+        cb(null, '/tmp')
     },
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now())

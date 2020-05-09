@@ -4,7 +4,7 @@ const constants = {
         "1" : "javascript",
         "2" : "node",
         "3" : "react",
-        "4" : "mysql",
+        "4" : "aws",
         "5" : "systemdesign"
     }
 }
