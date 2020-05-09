@@ -11,6 +11,13 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import Avatar from '@material-ui/core/Avatar';
 const me = require('../images/me.jpeg');
 const useStyles = makeStyles((theme) => ({
+    root:{
+        [theme.breakpoints.down('xs')]: {
+            position:'relative',
+            top:'-10px',
+            left:'10px'
+        },
+    },
     typography: {
         fontFamily: 'Lato',
         letterSpacing: 1,
@@ -88,7 +95,7 @@ const BlogContent = (props) => {
     const blog = props.location.state.blog_data;
     const classes = useStyles();
     return (
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" className={classes.root}>
             <div className={classes.headingContainer}>
                 <Typography variant="h4" component="h4" className={classes.typography}>
                     {blog.title}

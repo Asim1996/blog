@@ -1,11 +1,8 @@
 import React from 'react';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 
-import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import AppMenu from '../AppMenu'
@@ -15,13 +12,33 @@ import Hidden from '@material-ui/core/Hidden';
 const drawerWidth = 260;
 
 const useStyles = makeStyles((theme) => ({
-  divRoot:{
-    [theme.breakpoints.down('xs')]: {
-      width:0,
-      background:'none'
+  appBar: {
+    [theme.breakpoints.up('sm')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+      background: "#373B44",  /* fallback for old browsers */
+      background: '-webkit-linear-gradient(to right, #4286f4, #373B44)',  /* Chrome 10-25, Safari 5.1-6 */
+      background: 'linear-gradient(to right, #4286f4, #373B44)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     },
   },
-  
+
+  divRoot: {
+    top: 0,
+    left: 'auto',
+    left: 0,
+    
+    display: 'flex',
+    zIndex: 1100,
+    boxSizing: 'border-box',
+    flexShrink: 0,
+    flexDirection: 'column',
+    [theme.breakpoints.down('xs')]: {
+    position: 'absolute',
+    }
+    },
+  toolbar: theme.mixins.toolbar,
+
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
@@ -36,11 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    // background: '#232526',
-    // background: '-webkit-linear-gradient(to right, #414345, #232526)',
-    // background: 'linear-gradient(to right, #414345, #232526)',
-    // background: 'url("https://images.unsplash.com/photo-1473181488821-2d23949a045a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80")',
-    background:`url(${require('../images/bg-sidebar.jpeg')})`,
+    background: `url(${require('../images/bg-sidebar.jpeg')})`,
     backgroundPosition: "center",
     backgroundSize: "cover",
     color: 'white',
@@ -51,8 +64,8 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 1,
     padding: 11,
     fontWeight: 800,
-    fontSize:'1.8rem',
-    color:'black',
+    fontSize: '1.8rem',
+    color: 'black',
     '&::after': {
       content: "''",
       display: 'block',
@@ -66,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = (props) => {
+  console.log(props);
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
