@@ -12,17 +12,6 @@ import Hidden from '@material-ui/core/Hidden';
 const drawerWidth = 260;
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-      background: "#373B44",  /* fallback for old browsers */
-      background: '-webkit-linear-gradient(to right, #4286f4, #373B44)',  /* Chrome 10-25, Safari 5.1-6 */
-      background: 'linear-gradient(to right, #4286f4, #373B44)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    },
-  },
-
   divRoot: {
     top: 0,
     left: 'auto',
@@ -57,7 +46,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundSize: "cover",
     color: 'white',
-    opacity: '0.7'
+    opacity: '0.7',
+    [theme.breakpoints.down('xs')]: {
+      opacity:'1'
+    },
   },
   typography: {
     fontFamily: "Lato",
