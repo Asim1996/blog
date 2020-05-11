@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && yarn run preloadlink",
+    "build": "react-scripts build",
     "preloadlink": "node preloadlink",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
