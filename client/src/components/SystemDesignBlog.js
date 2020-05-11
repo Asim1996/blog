@@ -17,7 +17,7 @@ export default function SytemDesignBlog(props) {
   if (data) {
     return (
       <div>
-        <BlogLists blogs_list={data} category_image="systemdesign" />
+        <BlogLists blogs_list={data} category_image="Systemdesign" />
       </div>
     )
   }

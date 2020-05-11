@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-
+import {Helmet} from "react-helmet";
 import ReactHtmlParser from 'react-html-parser';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -96,6 +96,9 @@ const BlogContent = (props) => {
     const classes = useStyles();
     return (
         <Container maxWidth="lg" className={classes.root}>
+            <Helmet>
+                <meta name="description" content={`${blog.summary}`} />
+            </Helmet>
             <div className={classes.headingContainer}>
                 <Typography variant="h4" component="h4" className={classes.typography}>
                     {blog.title}

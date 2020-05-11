@@ -18,7 +18,7 @@ export default function AwsBlog(props) {
   if (data) {
     return (
       <div>
-        <BlogLists blogs_list={data} category_image="aws" />
+        <BlogLists blogs_list={data} category_image="Aws" />
       </div>
     )
   }

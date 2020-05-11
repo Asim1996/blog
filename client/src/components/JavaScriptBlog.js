@@ -18,7 +18,7 @@ export default function JavaScriptBlog(props) {
  if (data) {
     return (
       <div>
-        <BlogLists blogs_list={data} category_image="javascript" />
+        <BlogLists blogs_list={data} category_image="Javascript" />
       </div>
     )
   }
