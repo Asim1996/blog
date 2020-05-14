@@ -55,7 +55,7 @@ router.get('/api/blogs/:category', async (req, res) => {
 router.get('/api/blogs/id/:blog_id', async (req, res) => {
     try {
         const blog_id = req.params.blog_id;
-        let select_query = ['id', 'title', 'body', 'created']
+        let select_query = ['id', 'title','summary', 'body', 'created']
         const blog_data = await db('blogs')
             .select(select_query)
             .where('id', blog_id)
