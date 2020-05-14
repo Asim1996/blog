@@ -69,10 +69,11 @@ function BlogListItem(props) {
     const classes = useStyles();
     function navigatePage() {
         const title = props.blog_data.title.replace(/[^A-Z0-9]+/ig, "-");
-        props.history.push({
-            pathname: `/${constants.BLOGS_CATEGORY[props.blog_data.category]}/${title}`,
-            state: { blog_data: props.blog_data }
-        })
+        props.history.push(`/${constants.BLOGS_CATEGORY[props.blog_data.category]}/${props.blog_data.id}/${title}`);
+        // props.history.push({
+        //     pathname: `/${constants.BLOGS_CATEGORY[props.blog_data.category]}/${props.blog_data.id}/${title}`,
+        //     state: { blog_data: props.blog_data }
+        // })
     }
     return (
         <div>

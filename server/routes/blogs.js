@@ -23,7 +23,7 @@ router.get('/api/blogs/ping', (req, res) => {
 router.get('/api/blogs/:category', async (req, res) => {
     try {
         const category = req.params.category;
-        let select_query = ['id', 'title', 'summary', 'category', 'body', 'created']
+        let select_query = ['id', 'title', 'summary', 'category', 'created']
         const blogs_list = await db('blogs')
             .select(select_query)
             .where('category', category)
@@ -40,6 +40,37 @@ router.get('/api/blogs/:category', async (req, res) => {
             "status": "success",
             "message": "Blogs List",
             "data": blogs_list
+        })
+
+    } catch (error) {
+        const status_code = error.status_code || 500;
+        return res.status(status_code)
+            .json({
+                "status": "error",
+                "error": error.message
+            });
+    }
+})
+
+router.get('/api/blogs/id/:blog_id', async (req, res) => {
+    try {
+        const blog_id = req.params.blog_id;
+        let select_query = ['id', 'title', 'body', 'created']
+        const blog_data = await db('blogs')
+            .select(select_query)
+            .where('id', blog_id)
+        if (blog_data.length === 0) {
+            return res.json({
+                "status": "success",
+                "message": "Blogs Data",
+                "data": []
+            })
+        }
+
+        return res.json({
+            "status": "success",
+            "message": "Blogs Data",
+            "data": blog_data
         })
 
     } catch (error) {

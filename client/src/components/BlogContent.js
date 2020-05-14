@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import ReactHtmlParser from 'react-html-parser';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -9,13 +9,17 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Avatar from '@material-ui/core/Avatar';
+import useDataApi from '../hooks/fetchReducer';
+import NotFoundPage from './NotFoundPage';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 const me = require('../images/me.jpeg');
 const useStyles = makeStyles((theme) => ({
-    root:{
+    root: {
         [theme.breakpoints.down('xs')]: {
-            position:'relative',
-            top:'-10px',
-            left:'10px'
+            position: 'relative',
+            top: '-10px',
+            left: '10px'
         },
     },
     typography: {
@@ -85,17 +89,22 @@ const useStyles = makeStyles((theme) => ({
             lineHeight: '1.3',
         },
     },
-    socialMedia : {
-        whiteSpace : 'nowrap'
+    socialMedia: {
+        whiteSpace: 'nowrap'
     }
 
 }));
 
 const BlogContent = (props) => {
-    const blog = props.location.state.blog_data;
+    const blog_id = props.match.params.blog_id;
+    const [state, setUrl] = useDataApi(`/api/blogs/id/${blog_id}`);
+    const { data, isError, isLoading } = state;
     const classes = useStyles();
-    return (
-        <Container maxWidth="lg" className={classes.root}>
+
+    if (data && data.length > 0) {
+        const blog = data[0];
+        return (
+            <Container maxWidth="lg" className={classes.root}>
             <Helmet>
                 <meta name="description" content={`${blog.summary}`} />
             </Helmet>
@@ -133,7 +142,23 @@ const BlogContent = (props) => {
                 </div>
             </div>
         </Container>
-    )
+        )
+      }
+      if(data && data.length == 0){
+          return(
+              <NotFoundPage />
+          )
+      }
+      if (isError) {
+        return <h1>Oops something went wrong!</h1>
+      }
+      return (
+      <div className={classes.root}>
+        <CircularProgress />
+      </div>
+      )
+
+   
 }
 
 export default BlogContent;
